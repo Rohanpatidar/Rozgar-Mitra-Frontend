@@ -13,8 +13,6 @@ import logo from '../../../public/download.webp';
 import { LABOUR_THEME } from '../../../utils/labour.constants';
 
 const DRAWER_WIDTH = 260;
-
-// --- MUI Search Bar Styling ---
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
     borderRadius: '8px',
@@ -43,7 +41,6 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
         width: '100%',
     },
 }));
-// -----------------------------
 
 interface JwtPayload {
     sub?: string;
@@ -66,7 +63,7 @@ export const LabourLayout: React.FC = () => {
             const payload: JwtPayload = JSON.parse(atob(token.split('.')[1]));
             userName = payload.sub || 'Labor';
         } catch (error) {
-            console.error("Token decode nahi ho paya", error);
+            console.error("Unable to decode token", error);
         }
     }
 
@@ -118,7 +115,7 @@ export const LabourLayout: React.FC = () => {
                         <MenuIcon />
                     </IconButton>
 
-                    {/* SEARCH BAR AT TOP MIDDLE */}
+
                     <Box sx={{ flexGrow: 1, display: 'flex', justifyContent: { xs: 'flex-start', md: 'center' } }}>
                         <Search>
                             <SearchIconWrapper>
@@ -153,7 +150,7 @@ export const LabourLayout: React.FC = () => {
             </Box>
 
             <Box component="main" sx={{ flexGrow: 1, p: { xs: 2, sm: 4 }, width: { sm: `calc(100% - ${DRAWER_WIDTH}px)` }, mt: 8 }}>
-                {/* Yahan context={{ searchQuery }} bheja gaya hai */}
+
                 <Outlet context={{ searchQuery }} />
             </Box>
         </Box>

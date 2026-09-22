@@ -25,7 +25,6 @@ export const Labours: React.FC = () => {
     }, []);
     const getFullAddress = (addr: any) => {
         if (!addr) return 'N/A';
-        // Jo jo fields address me hongi, unhe filter karke comma se jod dega
         const parts = [addr.apartmentNumber, addr.buildingName, addr.colony, addr.city, addr.state, addr.pincode].filter(Boolean);
         return parts.length > 0 ? parts.join(', ') : 'N/A';
     };

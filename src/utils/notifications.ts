@@ -1,10 +1,4 @@
 import type { BookingRequest } from '../types/booking';
-
-// Live delivery without a backend: BroadcastChannel pushes messages
-// instantly to every open tab/window of this app on the same browser and
-// origin — e.g. a Customer tab booking a service and a Labour tab open at
-// the same time. It does NOT reach other devices or a real backend/push
-// service; wiring that up requires a server (WebSocket/FCM) once one exists.
 const CHANNEL_NAME = 'rozgarmitra-booking-requests';
 
 type BookingRequestListener = (request: BookingRequest) => void;

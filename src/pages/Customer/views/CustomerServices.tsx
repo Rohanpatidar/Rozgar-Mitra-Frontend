@@ -56,8 +56,6 @@ export const CustomerServices: React.FC = () => {
             return;
         }
         setLoadingId(serviceId);
-
-        // 1. Browser se Live Location nikalna
         if (!navigator.geolocation) {
             alert("Geolocation is not supported by your browser");
             setLoadingId(null);
@@ -69,12 +67,11 @@ export const CustomerServices: React.FC = () => {
                 const { latitude, longitude } = position.coords;
 
                 try {
-                    // 2. Backend ko Request Bhejna
                     await bookingApi.requestService({
                         serviceId: serviceId,
                         latitude: latitude,
                         longitude: longitude,
-                        addressText: "Indore, MP (Live Location)" // Baad me isko input field se le sakte hain
+                        addressText: "Indore, MP (Live Location)"
                     });
                     setActiveBookings((currentBookings) => {
                         const nextBookings = [...currentBookings, { serviceId, serviceName: service?.name, status: 'PENDING' }];

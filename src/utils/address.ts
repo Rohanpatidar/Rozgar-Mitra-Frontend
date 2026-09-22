@@ -11,8 +11,6 @@ export const INITIAL_ADDRESS_DATA: AddressData = {
 };
 
 export const ADDRESS_EMPTY_STATE: AddressFormState = { ...INITIAL_ADDRESS_DATA };
-
-// List of Indian states and union territories for accurate identification
 const INDIAN_STATES = [
     'Andhra Pradesh', 'Arunachal Pradesh', 'Assam', 'Bihar', 'Chhattisgarh',
     'Goa', 'Gujarat', 'Haryana', 'Himachal Pradesh', 'Jharkhand', 'Karnataka',

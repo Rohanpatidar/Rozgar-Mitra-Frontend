@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Box, Typography, Paper, TextField, Button, CircularProgress, Alert } from '@mui/material';
-import Grid from '@mui/material/Grid'; // Make sure to import Grid2 in newer MUI versions, or keep it Grid but use 'size'
+import Grid from '@mui/material/Grid';
 import { customerApi, type ProfileResponse } from '../../../api/customer.api';
 import { getApiErrorMessage } from '../../../api/client';
 import { LABOUR_THEME } from '../../../utils/labour.constants';
@@ -89,7 +89,7 @@ export const EditProfile: React.FC = () => {
 
             <Paper sx={{ p: { xs: 2, sm: 4 }, borderRadius: '16px' }} elevation={0} variant="outlined">
                 <Grid container spacing={3}>
-                    {/* NON-EDITABLE FIELDS */}
+
                     <Grid size={{ xs: 12, sm: 6 }}>
                         <TextField label="Full Name" fullWidth value={name} onChange={(event) => { setName(sanitizeFullName(event.target.value)); setErrors((current) => ({ ...current, name: undefined })); }} error={Boolean(errors.name)} helperText={errors.name} slotProps={{ htmlInput: { maxLength: VALIDATION.NAME_MAX_LENGTH } }} disabled={!profile || saving} />
                     </Grid>
@@ -100,7 +100,7 @@ export const EditProfile: React.FC = () => {
                         <TextField label="Date of Birth" fullWidth value={profile?.dob ?? ''} disabled />
                     </Grid>
 
-                    {/* EDITABLE FIELDS */}
+
                     <Grid size={{ xs: 12, sm: 6 }}>
                         <TextField label="Phone Number" fullWidth value={phone} onChange={(event) => { setPhone(formatPhoneNumber(event.target.value)); setErrors((current) => ({ ...current, phone: undefined })); }} error={Boolean(errors.phone)} helperText={errors.phone} type="tel" inputMode="numeric" slotProps={{ htmlInput: { maxLength: 13 } }} disabled={!profile || saving} />
                     </Grid>

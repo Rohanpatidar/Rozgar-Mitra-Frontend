@@ -1,5 +1,5 @@
 export const LABOUR_THEME = {
-    primary: '#059669', // Green theme for Labour (Earning vibe)
+    primary: '#059669',
     warning: '#f59e0b',
     background: '#f8fafc',
     surface: '#ffffff',

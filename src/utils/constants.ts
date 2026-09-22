@@ -1,4 +1,3 @@
-// Application route paths
 export const ROUTES = {
     LOGIN: '/login',
     SIGNUP: '/',
@@ -9,14 +8,10 @@ export const ROUTES = {
 } as const;
 
 export const buildCategoryDetailPath = (categoryId: string): string => `/category/${categoryId}`;
-
-// Validation regex patterns
 export const REGEX = {
     EMAIL: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
     PHONE: /^\+91\d{10}$/,
 } as const;
-
-// Field length / value constraints
 export const VALIDATION = {
     NAME_MAX_LENGTH: 35,
     USERNAME_MAX_LENGTH: 35,
@@ -44,32 +39,20 @@ export const ADDRESS_VALIDATION = {
     STATE: { maxLength: VALIDATION.ADDRESS_STATE_MAX_LENGTH },
     COUNTRY: { maxLength: VALIDATION.ADDRESS_COUNTRY_MAX_LENGTH },
 } as const;
-
-// localStorage keys
 export const STORAGE_KEYS = {
     AUTH_TOKEN: 'authToken',
     USER_ROLE: 'userRole',
 } as const;
-
-// User roles
 export const ROLES = {
     CUSTOMER: 'ROLE_CUSTOMER',
     LABOUR: 'ROLE_LABOUR',
 } as const;
-
-// User roles available at signup
 export const ROLE_OPTIONS = [
     { value: ROLES.CUSTOMER, label: 'Customer' },
     { value: ROLES.LABOUR, label: 'Labour' },
 ] as const;
-
-// How far a booking request should search for nearby labour
 export const NEARBY_RADIUS_KM = 10;
-
-// Brand
 export const BRAND_NAME = 'Rozgarmitra';
-
-// User-facing strings
 export const MESSAGES = {
     LOGIN_TITLE: 'Welcome Back',
     LOGIN_SUBTITLE: 'Login to book trusted help near you.',

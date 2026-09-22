@@ -2,10 +2,6 @@ import React from 'react';
 import { Card, Box, Typography } from '@mui/material';
 import { THEME_COLORS } from '../../utils/admin.constants';
 import type { StatCardProps } from '../../pages/Admin/admin.types';
-
-
-
-// Humne onClick add kiya hai (Types file me bhi chahein toh add kar sakte hain)
 export const StatCard: React.FC<StatCardProps & { onClick?: () => void }> = ({ title, value, icon, color = THEME_COLORS.primary, onClick }) => {
     return (
         <Card
@@ -17,7 +13,7 @@ export const StatCard: React.FC<StatCardProps & { onClick?: () => void }> = ({ t
                 display: 'flex',
                 alignItems: 'center',
                 gap: 2,
-                cursor: onClick ? 'pointer' : 'default', // Clickable look
+                cursor: onClick ? 'pointer' : 'default',
                 transition: 'transform 0.2s ease, box-shadow 0.2s ease',
                 '&:hover': onClick ? {
                     transform: 'translateY(-2px)',

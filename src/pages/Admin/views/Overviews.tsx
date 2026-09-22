@@ -7,8 +7,6 @@ import { THEME_COLORS } from '../../../utils/admin.constants';
 
 
 import { useNavigate } from 'react-router-dom';
-
-// Icons
 import PeopleIcon from '@mui/icons-material/People';
 import EngineeringIcon from '@mui/icons-material/Engineering';
 import PersonOffIcon from '@mui/icons-material/PersonOff';
@@ -42,7 +40,7 @@ export const Overview: React.FC = () => {
                     gap: 3
                 }}
             >
-                {/* 1. Total Customers -> Customers Tab */}
+                
                 <StatCard
                     title="Total Customers"
                     value={stats.totalCustomers.toLocaleString()}
@@ -51,7 +49,7 @@ export const Overview: React.FC = () => {
                     onClick={() => navigate('/admin/customers')}
                 />
 
-                {/* 2. Active Labour -> Labours Tab */}
+                
                 <StatCard
                     title="Active Labour"
                     value={stats.activeLabours.toLocaleString()}
@@ -60,7 +58,7 @@ export const Overview: React.FC = () => {
                     onClick={() => navigate('/admin/labours')}
                 />
 
-                {/* 3. UnActive Labour -> Labours Tab */}
+                
                 <StatCard
                     title="UnActive Labour"
                     value={Math.max(stats.totalLabours - stats.activeLabours, 0).toLocaleString()}
@@ -69,7 +67,7 @@ export const Overview: React.FC = () => {
                     onClick={() => navigate('/admin/labours')}
                 />
 
-                {/* 4. Task List -> Tasks Tab (Table View) */}
+                
                 <StatCard
                     title="Task List"
                     value={stats.totalTasks.toLocaleString()}
@@ -78,7 +76,7 @@ export const Overview: React.FC = () => {
                     onClick={() => navigate('/admin/tasks')}
                 />
 
-                {/* 5. Platform Revenue -> Redirects to Tasks Tab as requested */}
+                
                 <StatCard
                     title="Platform Revenue"
                     value={`₹${stats.platformRevenue.toLocaleString('en-IN')}`}

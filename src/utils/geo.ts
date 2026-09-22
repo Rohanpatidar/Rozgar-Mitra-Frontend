@@ -1,14 +1,9 @@
 import type { GeoCoordinates } from '../components/location/location.types';
-
-// Used as the map's initial center and as a stand-in "reference point" for
-// distance calculations until real labour locations are tracked.
-export const DEFAULT_MAP_CENTER: GeoCoordinates = { lat: 22.7196, lng: 75.8577 }; // Indore, MP
+export const DEFAULT_MAP_CENTER: GeoCoordinates = { lat: 22.7196, lng: 75.8577 };
 
 const EARTH_RADIUS_KM = 6371;
 
 const toRadians = (degrees: number): number => (degrees * Math.PI) / 180;
-
-// Haversine great-circle distance between two lat/lng points, in kilometers.
 export const getDistanceKm = (a: GeoCoordinates, b: GeoCoordinates): number => {
     const dLat = toRadians(b.lat - a.lat);
     const dLng = toRadians(b.lng - a.lng);

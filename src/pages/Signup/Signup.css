@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Abhaya+Libre:wght@400;600;700&display=swap');
 
-/* Base page styling */
+
 .page-container {
     min-height: 100vh;
     display: flex;
@@ -8,17 +8,17 @@
     align-items: center;
     justify-content: center;
     background-size: cover;
-    /* Makes sure the image covers the whole screen */
+    
     background-position: center;
-    /* Centers the image */
+    
     background-attachment: fixed;
-    /* Keeps the background still if you scroll */
-    /* Soft blue-gray background from theme */
+    
+    
     font-family: 'Abhaya Libre', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     padding: 20px;
 }
 
-/* Logo above card */
+
 .logo-container {
     margin-bottom: 20px;
 }
@@ -32,7 +32,7 @@
     background-color: White;
 }
 
-/* Main Card Layout */
+
 .signup-card {
     display: flex;
     width: 100%;
@@ -43,7 +43,7 @@
     overflow: hidden;
 }
 
-/* Left side - Form */
+
 .form-section {
     flex: 1.5;
     padding: 40px 50px;
@@ -65,7 +65,7 @@
     gap: 15px;
 }
 
-/* Inputs */
+
 .input-group {
     display: flex;
     flex-direction: column;
@@ -106,7 +106,7 @@
     flex-direction: column;
 }
 
-/* Validation Errors */
+
 .error-text {
     color: #d9534f;
     font-size: 12px;
@@ -123,12 +123,12 @@
     font-size: 14px;
 }
 
-/* Buttons */
+
 .register-btn {
     margin-top: 10px;
     padding: 14px;
     background-color: #7793E9;
-    /* Blue from theme */
+    
     color: white;
     border: none;
     border-radius: 8px;
@@ -147,7 +147,7 @@
     cursor: not-allowed;
 }
 
-/* Right side - Theme Panel */
+
 .theme-section {
     flex: 1;
     background-color: #7793E9;
@@ -159,7 +159,7 @@
     justify-content: center;
     text-align: center;
     border-top-left-radius: 60px;
-    /* Curve effect like the theme */
+    
     border-bottom-left-radius: 60px;
 }
 
@@ -189,7 +189,7 @@
     color: #7793E9;
 }
 
-/* Responsive Design */
+
 @media (max-width: 768px) {
     .signup-card {
         flex-direction: column-reverse;

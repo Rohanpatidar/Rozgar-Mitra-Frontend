@@ -6,7 +6,6 @@ export const adminApi = {
 
     getTasks: (search = '') =>
         apiGet<AdminTask[]>('/admin/tasks', search.trim() ? { search: search.trim() } : undefined),
-    // --- Users ---
     getCustomers: () =>
         apiGet<UserResponseDto[]>('/admin/customers'),
 
@@ -15,8 +14,6 @@ export const adminApi = {
 
     deleteUser: (id: string) =>
         apiDelete<string>(`/admin/users/${id}`),
-
-    // --- Services ---
     getServices: (search = '') =>
         apiGet<ServiceCategory[]>('/admin/services', search.trim() ? { search: search.trim() } : undefined),
 

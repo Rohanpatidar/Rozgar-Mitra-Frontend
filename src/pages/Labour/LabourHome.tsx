@@ -6,23 +6,19 @@ import { LABOUR_THEME } from '../../utils/labour.constants';
 import type { LabourTask } from '../../pages/Labour/labour.types';
 
 export const LabourHome: React.FC = () => {
-    // Ye state baad me backend API se map hogi
     const [isOnline, setIsOnline] = useState(false);
-
-    // Dummy Task for UI check
     const pendingTasks: LabourTask[] = [
         { id: 'TSK-101', customerName: 'Rohan Sharma', location: 'Vijay Nagar, Indore', service: 'Plumbing Repair', estimatedEarnings: 250, status: 'PENDING' }
     ];
 
     const handleDutyToggle = (event: React.ChangeEvent<HTMLInputElement>) => {
         setIsOnline(event.target.checked);
-        // Aage chal kar yahan Backend API call hogi status update karne ke liye
     };
 
     return (
         <Box sx={{ backgroundColor: LABOUR_THEME.background, minHeight: '100vh', p: { xs: 2, sm: 4 }, fontFamily: 'Abhaya Libre' }}>
 
-            {/* Header & Duty Toggle */}
+            
             <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 4 }}>
                 <Box>
                     <Typography variant="h5" sx={{ fontWeight: 800, color: LABOUR_THEME.text }}>Welcome, Ramesh</Typography>
@@ -39,7 +35,7 @@ export const LabourHome: React.FC = () => {
                 />
             </Box>
 
-            {/* Quick Stats Grid */}
+            
             <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 2, mb: 4 }}>
                 <Paper elevation={0} sx={{ p: 2, borderRadius: '16px', border: '1px solid #e2e8f0', textAlign: 'center' }}>
                     <Typography variant="body2" color="textSecondary">Today's Earnings</Typography>
@@ -55,7 +51,7 @@ export const LabourHome: React.FC = () => {
                 </Paper>
             </Box>
 
-            {/* Task Requests Section */}
+            
             <Typography variant="h6" sx={{ fontWeight: 800, mb: 2 }}>
                 New Requests {isOnline && <span style={{ color: 'red', fontSize: '12px' }}>● Live</span>}
             </Typography>

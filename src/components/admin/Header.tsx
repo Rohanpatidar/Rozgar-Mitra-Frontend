@@ -28,7 +28,7 @@ export const Header: React.FC<HeaderProps> = ({ handleDrawerToggle }) => {
         >
             <Toolbar sx={{ justifyContent: 'space-between' }}>
                 <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                    {/* Hamburger Menu (Only visible on mobile/tablet) */}
+                    
                     <IconButton
                         color="inherit"
                         aria-label="open drawer"
@@ -44,9 +44,9 @@ export const Header: React.FC<HeaderProps> = ({ handleDrawerToggle }) => {
                 </Box>
 
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-                    {/* Notification button yahan se hata diya gaya hai */}
+                    
 
-                    {/* Profile Section (Removed left border for cleaner look) */}
+                    
                     <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                         <Avatar sx={{ bgcolor: THEME_COLORS.primary, width: 35, height: 35 }}>A</Avatar>
                         <Typography variant="body2" sx={{ fontWeight: 600, display: { xs: 'none', sm: 'block' } }}>
@@ -54,7 +54,7 @@ export const Header: React.FC<HeaderProps> = ({ handleDrawerToggle }) => {
                         </Typography>
                     </Box>
 
-                    {/* Logout Button */}
+                    
                     <IconButton size="small" onClick={handleLogout} sx={{ color: '#d9534f', ml: 1 }}>
                         <LogoutIcon fontSize="small" />
                     </IconButton>

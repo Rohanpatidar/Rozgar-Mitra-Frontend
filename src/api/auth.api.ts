@@ -25,21 +25,16 @@ export interface SignupPayload {
     password: string;
     role: string;
 }
-
-// Update this interface to match your Spring Boot JSON exactly
 export interface AuthResponse {
     data?: {
         token?: string;
         role?: string;
         id?: string;
         username?: string;
-        // add other fields if you need them later
     };
     message?: string;
     status?: number;
 }
-
-// Update the extractors to look inside the nested 'data' object
 export const extractAuthToken = (response: AuthResponse): string | undefined =>
     response.data?.token;
 

@@ -3,7 +3,7 @@ import { Box, Drawer, List, ListItem, ListItemButton, ListItemIcon, ListItemText
 import { useNavigate, useLocation } from 'react-router-dom';
 import { ADMIN_SIDEBAR_WIDTH, ADMIN_MENU_ITEMS, THEME_COLORS } from '../../utils/admin.constants';
 import type { SidebarProps } from '../../pages/Admin/admin.types';
-import logo from '../../public/download.webp'; // Update path if needed
+import logo from '../../public/download.webp';
 
 export const Sidebar: React.FC<SidebarProps> = ({ mobileOpen, handleDrawerToggle }) => {
     const navigate = useNavigate();
@@ -12,11 +12,9 @@ export const Sidebar: React.FC<SidebarProps> = ({ mobileOpen, handleDrawerToggle
     const handleNavigation = (path: string) => {
         navigate(path);
         if (mobileOpen) {
-            handleDrawerToggle(); // Mobile me click karne par drawer band ho jayega
+            handleDrawerToggle();
         }
     };
-
-    // Sidebar ka content variable me rakha hai taaki 2 jagah reuse ho sake
     const drawerContent = (
         <Box>
             <Box sx={{ display: 'flex', alignItems: 'center', p: 2, gap: 1.5 }}>
@@ -59,12 +57,12 @@ export const Sidebar: React.FC<SidebarProps> = ({ mobileOpen, handleDrawerToggle
 
     return (
         <Box component="nav" sx={{ width: { md: ADMIN_SIDEBAR_WIDTH }, flexShrink: { md: 0 } }}>
-            {/* Mobile Drawer (Temporary) */}
+
             <Drawer
                 variant="temporary"
                 open={mobileOpen}
                 onClose={handleDrawerToggle}
-                ModalProps={{ keepMounted: true }} // Better open performance on mobile
+                ModalProps={{ keepMounted: true }}
                 sx={{
                     display: { xs: 'block', md: 'none' },
                     '& .MuiDrawer-paper': { boxSizing: 'border-box', width: ADMIN_SIDEBAR_WIDTH, backgroundColor: THEME_COLORS.white },
@@ -73,7 +71,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ mobileOpen, handleDrawerToggle
                 {drawerContent}
             </Drawer>
 
-            {/* Desktop Drawer (Permanent) */}
+
             <Drawer
                 variant="permanent"
                 sx={{

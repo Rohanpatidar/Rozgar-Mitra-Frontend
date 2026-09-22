@@ -72,16 +72,15 @@ export const CustomerLayout: React.FC = () => {
         }
     };
     const token = localStorage.getItem('authToken');
-    let userName = 'Labor'; // Default fallback
+    let userName = 'Labor';
 
     if (token) {
         try {
             const payload = JSON.parse(atob(token.split('.')[1]));
-            // Ab hume pata hai ki naam 'sub' ke andar hai
             userName = payload.sub || 'Labor';
 
         } catch (error) {
-            console.error("Token decode nahi ho paya", error);
+            console.error("Unable to decode token", error);
         }
     }
 
@@ -96,7 +95,7 @@ export const CustomerLayout: React.FC = () => {
                     const isActive = location.pathname === item.path;
                     return (
                         <ListItem key={item.text} disablePadding sx={{ mb: 1 }}>
-                            {/* [FIXED]: ListItemButton use kiya gaya hai error hatane ke liye */}
+
                             <ListItemButton
                                 onClick={() => { navigate(item.path); setMobileOpen(false); }}
                                 sx={{

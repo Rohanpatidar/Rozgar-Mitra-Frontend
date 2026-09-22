@@ -5,15 +5,13 @@ import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import type { CustomerServiceCategory } from '../pages/Customer/customer.types';
 
 export const CUSTOMER_THEME = {
-    primary: '#059669', // Green theme for Labour (Earning vibe)
+    primary: '#059669',
     warning: '#f59e0b',
     background: '#f8fafc',
     surface: '#ffffff',
     text: '#111827',
     textSecondary: '#6b7280'
 };
-
-// Placeholder data jab tak backend connect nahi hota
 export const DUMMY_CATEGORIES: CustomerServiceCategory[] = [
     { id: 1, name: 'Plumber', icon: PlumbingIcon, basePrice: 150, color: '#e0f2fe' },
     { id: 2, name: 'Electrician', icon: ElectricalServicesIcon, basePrice: 200, color: '#fef3c7' },

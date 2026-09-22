@@ -42,11 +42,8 @@ export interface LabourStats {
 }
 
 export const bookingApi = {
-    // Customer ke liye
     requestService: (data: { serviceId: number; latitude: number; longitude: number; addressText: string }) =>
         apiPost('/booking/request', data),
-
-    // Labour ke liye
     getNearbyTasks: (search = '') =>
         apiGet<NearbyTask[]>('/booking/nearby-tasks', search.trim() ? { search: search.trim() } : undefined),
 

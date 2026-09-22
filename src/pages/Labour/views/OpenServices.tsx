@@ -27,8 +27,6 @@ export const OpenServices: React.FC = () => {
 
     useEffect(() => {
         void loadTasks();
-        // loadTasks reads the current search query and is intentionally recreated with it.
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [searchQuery]);
 
     const handleAction = async (taskId: number, action: 'accept' | 'reject') => {

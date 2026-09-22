@@ -55,7 +55,6 @@ export interface PagedResponse<T> {
 }
 
 export const customerApi = {
-    // Services (Admin wali same API use kar sakte hain agar backend me permit-all ya user role allowed hai)
     getServices: () => apiGet<ServiceCategory[]>('/admin/services'),
 
     getBookings: (page = 0, size = 50) => apiGet<CustomerBooking[] | PagedResponse<CustomerBooking>>('/booking/customer/bookings', { page, size }),
@@ -63,11 +62,7 @@ export const customerApi = {
     deleteAccount: () => apiDelete<string>('/customer/account'),
 
     getProfile: () => apiGet<ProfileResponse>('/customer/profile'),
-
-    // Booking Request (Under 12km logic backend pe handle hoga)
     requestService: (serviceId: number) => apiPost('/customer/request', { serviceId }),
-
-    // Profile Management
     updateProfile: (data: unknown) => apiPut<ProfileResponse>('/customer/profile', data),
     changePassword: (data: { currentPassword: string; newPassword: string }) => apiPut<string, { currentPassword: string; newPassword: string }>('/customer/change-password', data),
 };

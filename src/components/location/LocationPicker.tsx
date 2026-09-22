@@ -15,9 +15,6 @@ import { reverseGeocode } from '../../api/geocode.api';
 import { MESSAGES } from '../../utils/constants';
 import { DEFAULT_MAP_CENTER } from '../../utils/geo';
 import type { GeoCoordinates, LocationResult } from './location.types';
-
-// Vite doesn't resolve Leaflet's default marker asset paths automatically —
-// point them at the bundled images explicitly.
 L.Icon.Default.mergeOptions({
     iconRetinaUrl: markerIcon2x,
     iconUrl: markerIcon,
@@ -58,9 +55,6 @@ const LocationPicker: FC<LocationPickerProps> = ({ onChange }) => {
             onChange({ coordinates: next, address: '' });
         }
     };
-
-    // Pure browser API call — no React state touched synchronously, so this
-    // is safe to invoke directly from the mount effect below.
     const requestCurrentPosition = () => {
         if (!navigator.geolocation) {
             setIsLocating(false);
@@ -87,11 +81,7 @@ const LocationPicker: FC<LocationPickerProps> = ({ onChange }) => {
     };
 
     useEffect(() => {
-        // requestCurrentPosition only sets state inside the async
-        // getCurrentPosition callbacks, never synchronously in this body.
-        // eslint-disable-next-line react-hooks/set-state-in-effect
         requestCurrentPosition();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const handleAddressChange = (event: React.ChangeEvent<HTMLInputElement>) => {

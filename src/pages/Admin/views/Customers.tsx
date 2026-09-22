@@ -25,7 +25,6 @@ export const Customers: React.FC = () => {
     }, []);
     const getFullAddress = (addr: any) => {
         if (!addr) return 'N/A';
-        // Jo jo fields address me hongi, unhe filter karke comma se jod dega
         const parts = [addr.apartmentNumber, addr.buildingName, addr.colony, addr.city, addr.state, addr.pincode].filter(Boolean);
         return parts.length > 0 ? parts.join(', ') : 'N/A';
     };
@@ -33,7 +32,7 @@ export const Customers: React.FC = () => {
         if (window.confirm("Are you sure you want to delete this customer?")) {
             try {
                 await adminApi.deleteUser(id);
-                fetchCustomers(); // Delete hone ke baad list refresh karein
+                fetchCustomers();
             } catch (error) {
                 alert(getApiErrorMessage(error, "Failed to delete user"));
             }

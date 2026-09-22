@@ -1,8 +1,4 @@
 import type { SvgIconComponent } from '@mui/icons-material';
-
-// ==========================================
-// 1. UI COMPONENT TYPES (Aapke purane types)
-// ==========================================
 export interface AdminMenuItem {
     text: string;
     path: string;
@@ -23,12 +19,8 @@ export interface StatCardProps {
     value: string | number;
     icon: React.ReactNode;
     color?: string;
-    onClick?: () => void; // Clickable cards ke liye
+    onClick?: () => void;
 }
-
-// ==========================================
-// 2. API / BACKEND DATA TYPES (Naye types)
-// ==========================================
 export interface Address {
     apartmentNumber?: string;
     buildingName?: string;
@@ -38,8 +30,6 @@ export interface Address {
     pincode?: string;
     country?: string;
 }
-
-// UserResponseDto me city hata kar address add karein
 export interface UserResponseDto {
     id: string;
     name: string;
@@ -47,7 +37,7 @@ export interface UserResponseDto {
     email: string;
     phone_number: string;
     role: string;
-    address?: Address; // <-- YE ADD KIYA
+    address?: Address;
 }
 
 export interface ServiceCategory {

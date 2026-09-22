@@ -57,7 +57,7 @@ export const Services: React.FC = () => {
             <Paper sx={{ p: 3, mb: 4, borderRadius: '16px', boxShadow: '0 4px 15px rgba(0,0,0,0.05)' }}>
                 <Typography variant="h6" sx={{ mb: 2 }}>Add New Service</Typography>
                 <form onSubmit={handleAddService}>
-                    {/* Error-Free CSS Grid using Box instead of MUI Grid */}
+                    
                     <Box
                         sx={{
                             display: 'grid',

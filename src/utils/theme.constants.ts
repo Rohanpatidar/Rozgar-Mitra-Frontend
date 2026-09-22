@@ -1,5 +1,4 @@
 export const PREMIUM_THEME = {
-    // Deep dark aesthetic backgrounds
     customerBg: 'linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%)',
     labourBg: 'linear-gradient(135deg, #064e3b 0%, #020617 100%)',
     textWhite: '#f8fafc',
@@ -7,8 +6,6 @@ export const PREMIUM_THEME = {
     accent: '#3b82f6',
     success: '#10b981',
     danger: '#ef4444',
-
-    // Glassmorphism reusable style
     glassEffect: {
         background: 'rgba(255, 255, 255, 0.05)',
         backdropFilter: 'blur(16px)',

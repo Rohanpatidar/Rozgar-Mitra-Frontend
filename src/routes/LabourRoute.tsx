@@ -8,7 +8,6 @@ const LabourRoute = () => {
     }
 
     if (normalizeUserRole(getUserRole()) !== 'ROLE_LABOUR') {
-        // Agar labour nahi hai, toh wapas login/unauthorized bhej do
         return <Navigate to={ROUTES.LOGIN} replace />;
     }
 

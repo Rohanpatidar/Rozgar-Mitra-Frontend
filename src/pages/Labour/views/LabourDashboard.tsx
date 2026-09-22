@@ -70,8 +70,6 @@ export const LabourDashboard: React.FC = () => {
     useEffect(() => {
         if (!isOnline) return;
         updateLabourLiveLocation();
-        // Polling keeps newly created requests visible without making location updates as frequent as task reads.
-        // eslint-disable-next-line react-hooks/set-state-in-effect
         void fetchTasks();
         const taskInterval = setInterval(() => { void fetchTasks(); }, 2000);
         const locationInterval = setInterval(updateLabourLiveLocation, 30000);
@@ -79,8 +77,6 @@ export const LabourDashboard: React.FC = () => {
             clearInterval(taskInterval);
             clearInterval(locationInterval);
         };
-        // fetchTasks reads the current search query and is intentionally recreated with it.
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isOnline, searchQuery]);
 
     const handleDutyToggle = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -88,7 +84,7 @@ export const LabourDashboard: React.FC = () => {
         setIsOnline(nextOnline);
         void apiPost('/labour/availability', { online: nextOnline }).catch(() => {
             setIsOnline(!nextOnline);
-            alert('Availability update nahi ho payi. Please try again.');
+            alert('Availability could not be updated. Please try again.');
         });
     };
 
@@ -116,7 +112,7 @@ export const LabourDashboard: React.FC = () => {
             alert('✅ Start OTP verified. Service is now STARTED.');
             await fetchTasks();
         } catch (error) {
-            alert(getApiErrorMessage(error, 'Start OTP verify nahi hua.'));
+            alert(getApiErrorMessage(error, 'Start OTP verification failed.'));
         } finally {
             setVerifyingOtp(false);
         }
@@ -131,7 +127,7 @@ export const LabourDashboard: React.FC = () => {
             alert('✅ Completion OTP verified. Service completed and amount calculated.');
             await fetchTasks();
         } catch (error) {
-            alert(getApiErrorMessage(error, 'Completion OTP verify nahi hua.'));
+            alert(getApiErrorMessage(error, 'Completion OTP verification failed.'));
         } finally {
             setVerifyingOtp(false);
         }
@@ -146,7 +142,7 @@ export const LabourDashboard: React.FC = () => {
             await fetchTasks();
             alert('Request rejected. You can choose another service.');
         } catch {
-            alert('Request reject nahi hua. Backend reject endpoint check karein.');
+            alert('Request could not be rejected. Please try again.');
         } finally {
             setRejectingTaskId(null);
         }
