@@ -1,5 +1,5 @@
 import axios, { type AxiosRequestConfig, type AxiosResponse } from 'axios';
-import { getAuthToken } from '../utils/auth';
+import { clearSession, getAuthToken } from '../utils/auth';
 
 const baseURL = import.meta.env.VITE_API_BASE_URL ?? '/api';
 
@@ -18,6 +18,17 @@ apiClient.interceptors.request.use((config) => {
     return config;
 });
 
+apiClient.interceptors.response.use(
+    (response) => response,
+    (error) => {
+        if (error.response?.status === 401 && getAuthToken()) {
+            clearSession();
+            if (window.location.pathname !== '/login') window.location.assign('/login');
+        }
+        return Promise.reject(error);
+    },
+);
+
 export const apiGet = <TResponse>(
     url: string,
     params?: Record<string, unknown>,
@@ -29,6 +40,17 @@ export const apiPost = <TResponse, TPayload = unknown>(
     payload?: TPayload,
     config?: AxiosRequestConfig,
 ): Promise<AxiosResponse<TResponse>> => apiClient.post<TResponse>(url, payload, config);
+
+export const apiPut = <TResponse, TPayload = unknown>(
+    url: string,
+    payload?: TPayload,
+    config?: AxiosRequestConfig,
+): Promise<AxiosResponse<TResponse>> => apiClient.put<TResponse>(url, payload, config);
+
+export const apiDelete = <TResponse>(
+    url: string,
+    config?: AxiosRequestConfig,
+): Promise<AxiosResponse<TResponse>> => apiClient.delete<TResponse>(url, config);
 
 export const getApiErrorMessage = (error: unknown, fallback: string): string => {
     if (axios.isAxiosError(error)) {

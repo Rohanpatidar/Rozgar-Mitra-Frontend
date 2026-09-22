@@ -18,7 +18,7 @@ import {
 } from '../../components/auth/AuthLayout.styles';
 import { loginRequest, extractAuthToken, extractUserRole } from '../../api/auth.api';
 import { getApiErrorMessage } from '../../api/client';
-import { setAuthToken, setUserRole } from '../../utils/auth';
+import { setAuthToken, setUserRole, normalizeUserRole } from '../../utils/auth';
 import { BRAND_NAME, MESSAGES, ROUTES, VALIDATION } from '../../utils/constants';
 import { sanitizeUsername, validatePassword, validateUsername } from '../../utils/validation';
 import logo from '../../public/download.webp';
@@ -91,11 +91,12 @@ const Login: FC = () => {
             setAuthToken(token);
 
             const role = extractUserRole(response.data);
-            if (role) {
-                setUserRole(role);
-            }
+            const normalizedRole = normalizeUserRole(role ?? null);
+            if (normalizedRole) setUserRole(normalizedRole);
 
-            navigate(ROUTES.HOME, { replace: true });
+            if (normalizedRole === 'ROLE_ADMIN') navigate(ROUTES.ADMIN, { replace: true });
+            else if (normalizedRole === 'ROLE_LABOUR') navigate(ROUTES.LABOUR, { replace: true });
+            else navigate(ROUTES.HOME, { replace: true });
         } catch (requestError) {
             setError(getApiErrorMessage(requestError, MESSAGES.LOGIN_GENERIC_ERROR));
         } finally {

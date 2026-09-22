@@ -4,6 +4,8 @@ export const ROUTES = {
     SIGNUP: '/',
     HOME: '/home',
     CATEGORY_DETAIL: '/category/:categoryId',
+    ADMIN: '/admin',
+    LABOUR: '/labour',
 } as const;
 
 export const buildCategoryDetailPath = (categoryId: string): string => `/category/${categoryId}`;
