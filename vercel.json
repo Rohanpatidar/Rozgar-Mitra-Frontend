@@ -1,16 +1,8 @@
 {
-    "rewrites": [
-        {
-            "source": "/api/:match*",
-            "destination": "https://rozgar-mitra-backend.onrender.com/api/:match*"
-        },
-        {
-            "source": "/geo/:match*",
-            "destination": "https://nominatim.openstreetmap.org/:match*"
-        },
-        {
-            "source": "/(.*)",
-            "destination": "/index.html"
-        }
-    ]
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
 }
