@@ -1,8 +1,9 @@
 import axios, { type AxiosRequestConfig, type AxiosResponse } from 'axios';
 import { clearSession, getAuthToken } from '../utils/auth';
 
-const baseURL = import.meta.env.VITE_API_BASE_URL ?? '/api';
-
+const baseURL = import.meta.env.VITE_API_BASE_URL
+    ? `${import.meta.env.VITE_API_BASE_URL}/api`
+    : '/api';
 export const apiClient = axios.create({
     baseURL,
     headers: {
