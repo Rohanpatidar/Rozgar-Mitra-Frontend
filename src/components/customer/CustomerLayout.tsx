@@ -90,7 +90,7 @@ export const CustomerLayout: React.FC = () => {
         <Box sx={{ height: '100%', backgroundColor: CUSTOMER_THEME.surface }}>
             <Toolbar sx={{ display: 'flex', gap: 1.5, py: 2 }}>
                 <img src={logo} alt="RozgarMitra" style={{ width: 40, height: 40, borderRadius: '8px' }} />
-                <Typography variant="h6" sx={{ fontWeight: 800, color: CUSTOMER_THEME.primary }}>RozgarMitra</Typography>
+                <Typography variant="h6" sx={{ fontWeight: 800, color: CUSTOMER_THEME.primary }}>RozgarSetu</Typography>
             </Toolbar>
             <List sx={{ px: 2 }}>
                 {menuItems.map((item) => {

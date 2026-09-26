@@ -14,7 +14,7 @@ export const publishBookingRequest = (request: BookingRequest): void => {
 
 export const subscribeToBookingRequests = (listener: BookingRequestListener): (() => void) => {
     const channel = openChannel();
-    if (!channel) return () => {};
+    if (!channel) return () => { };
 
     const handleMessage = (event: MessageEvent<BookingRequest>) => listener(event.data);
     channel.addEventListener('message', handleMessage);

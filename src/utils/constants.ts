@@ -52,7 +52,7 @@ export const ROLE_OPTIONS = [
     { value: ROLES.LABOUR, label: 'Labour' },
 ] as const;
 export const NEARBY_RADIUS_KM = 10;
-export const BRAND_NAME = 'Rozgarmitra';
+export const BRAND_NAME = 'Rozgar Setu';
 export const MESSAGES = {
     LOGIN_TITLE: 'Welcome Back',
     LOGIN_SUBTITLE: 'Login to book trusted help near you.',

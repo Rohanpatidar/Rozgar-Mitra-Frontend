@@ -20,7 +20,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ mobileOpen, handleDrawerToggle
             <Box sx={{ display: 'flex', alignItems: 'center', p: 2, gap: 1.5 }}>
                 <img src={logo} alt="RozgarMitra" style={{ width: 40, height: 40, borderRadius: '8px' }} />
                 <Typography variant="h6" sx={{ fontWeight: 800, color: THEME_COLORS.primary }}>
-                    RozgarMitra
+                    RozgarSetu
                 </Typography>
             </Box>
             <List sx={{ px: 2 }}>
