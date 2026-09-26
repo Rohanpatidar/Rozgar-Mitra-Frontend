@@ -11,7 +11,10 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import SearchIcon from '@mui/icons-material/Search';
 import logo from '../../../public/download.webp';
 import { LABOUR_THEME } from '../../../utils/labour.constants';
-
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import { clearSession } from '../../../utils/auth';
+import { getApiErrorMessage } from '../../../api/client';
+import { apiDelete } from '../../../api/client';
 const DRAWER_WIDTH = 260;
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -52,6 +55,8 @@ interface JwtPayload {
 export const LabourLayout: React.FC = () => {
     const [mobileOpen, setMobileOpen] = useState<boolean>(false);
     const [searchQuery, setSearchQuery] = useState<string>('');
+    const [deletingAccount, setDeletingAccount] = useState(false);
+
     const navigate = useNavigate();
     const location = useLocation();
 
@@ -73,8 +78,25 @@ export const LabourLayout: React.FC = () => {
         { text: 'Services (View Only)', path: '/labour/services', icon: <BuildIcon /> },
         { text: 'Completed Services', path: '/labour/completed-services', icon: <CheckCircleIcon /> },
         { text: 'Profile', path: '/labour/profile', icon: <PersonIcon /> }
+
     ];
 
+    const handleDeleteAccount = async () => {
+        if (!window.confirm('Are you sure you want to permanently delete your Labour account? This action cannot be undone.')) return;
+
+        setDeletingAccount(true);
+        try {
+
+            await apiDelete('/customer/delete-account');
+
+            clearSession();
+            navigate('/login');
+        } catch (error) {
+            alert(getApiErrorMessage(error, 'Failed to delete account'));
+        } finally {
+            setDeletingAccount(false);
+        }
+    };
     const drawer = (
         <Box sx={{ height: '100%', backgroundColor: LABOUR_THEME.surface }}>
             <Toolbar sx={{ display: 'flex', gap: 1.5, py: 2 }}>
@@ -101,6 +123,17 @@ export const LabourLayout: React.FC = () => {
                         </ListItem>
                     );
                 })}
+                {/* ADDED: Delete Account Sidebar Button */}
+                <ListItem disablePadding sx={{ mb: 1 }}>
+                    <ListItemButton
+                        onClick={handleDeleteAccount}
+                        disabled={deletingAccount}
+                        sx={{ borderRadius: '12px', color: '#ef4444', '&:hover': { backgroundColor: '#fef2f2' } }}
+                    >
+                        <ListItemIcon sx={{ color: 'inherit', minWidth: 40 }}><DeleteForeverIcon /></ListItemIcon>
+                        <ListItemText primary={<Typography sx={{ fontWeight: 600 }}>{deletingAccount ? 'Deleting Account...' : 'Delete Account'}</Typography>} />
+                    </ListItemButton>
+                </ListItem>
             </List>
         </Box>
     );
@@ -134,8 +167,7 @@ export const LabourLayout: React.FC = () => {
                         <Avatar sx={{ bgcolor: LABOUR_THEME.primary, width: 35, height: 35, textTransform: 'uppercase' }}>
                             {userName.charAt(0)}
                         </Avatar>
-                        <IconButton onClick={() => { localStorage.clear(); navigate('/login'); }} sx={{ color: '#ef4444' }}><LogoutIcon /></IconButton>
-                    </Box>
+                        <IconButton onClick={() => { clearSession(); navigate('/login'); }} sx={{ color: '#ef4444' }}><LogoutIcon /></IconButton>                    </Box>
 
                 </Toolbar>
             </AppBar>

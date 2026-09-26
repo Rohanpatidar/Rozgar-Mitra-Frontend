@@ -56,10 +56,10 @@ export interface PagedResponse<T> {
 
 export const customerApi = {
     getServices: () => apiGet<ServiceCategory[]>('/admin/services'),
-
     getBookings: (page = 0, size = 50) => apiGet<CustomerBooking[] | PagedResponse<CustomerBooking>>('/booking/customer/bookings', { page, size }),
 
-    deleteAccount: () => apiDelete<string>('/customer/account'),
+
+    deleteAccount: () => apiDelete<string>('/customer/delete-account'),
 
     getProfile: () => apiGet<ProfileResponse>('/customer/profile'),
     requestService: (serviceId: number) => apiPost('/customer/request', { serviceId }),

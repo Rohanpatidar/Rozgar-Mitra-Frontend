@@ -12,6 +12,7 @@ import logo from '../../public/download.webp';
 import { CUSTOMER_THEME } from '../../utils/customer.constants';
 import { customerApi } from '../../api/customer.api';
 import { getApiErrorMessage } from '../../api/client';
+import { clearSession } from '../../utils/auth';
 
 const DRAWER_WIDTH = 260;
 
@@ -58,12 +59,13 @@ export const CustomerLayout: React.FC = () => {
     ];
 
     const handleDeleteAccount = async () => {
-        if (!window.confirm('Are you sure you want to permanently delete your account?')) return;
+        if (!window.confirm('Are you sure you want to permanently delete your account? This action cannot be undone.')) return;
 
         setDeletingAccount(true);
         try {
             await customerApi.deleteAccount();
-            localStorage.clear();
+
+            clearSession();
             navigate('/login');
         } catch (error) {
             alert(getApiErrorMessage(error, 'Failed to delete account'));
